@@ -123,7 +123,6 @@ export class OrderResolverBase {
         ...args,
         data: {
           ...args.data,
-
           customer: {
             connect: args.data.customer,
           },
