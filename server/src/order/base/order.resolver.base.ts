@@ -97,17 +97,13 @@ export class OrderResolverBase {
       data: {
         ...args.data,
 
-        customer: args.data.customer
-          ? {
-              connect: args.data.customer,
-            }
-          : undefined,
+        customer: {
+          connect: args.data.customer,
+        },
 
-        product: args.data.product
-          ? {
-              connect: args.data.product,
-            }
-          : undefined,
+        product: {
+          connect: args.data.product,
+        },
       },
     });
   }
@@ -127,18 +123,13 @@ export class OrderResolverBase {
         ...args,
         data: {
           ...args.data,
+          customer: {
+            connect: args.data.customer,
+          },
 
-          customer: args.data.customer
-            ? {
-                connect: args.data.customer,
-              }
-            : undefined,
-
-          product: args.data.product
-            ? {
-                connect: args.data.product,
-              }
-            : undefined,
+          product: {
+            connect: args.data.product,
+          },
         },
       });
     } catch (error) {

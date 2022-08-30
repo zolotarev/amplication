@@ -3,11 +3,11 @@ import { Product } from "../product/Product";
 
 export type Order = {
   createdAt: Date;
-  customer?: Customer | null;
+  customer?: Customer;
   discount: number | null;
   id: string;
-  product?: Product | null;
-  quantity: number | null;
+  product?: Product;
+  quantity: number;
   totalPrice: number | null;
   updatedAt: Date;
 };

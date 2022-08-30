@@ -14,8 +14,8 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsDate,
   ValidateNested,
-  IsOptional,
   IsNumber,
+  IsOptional,
   IsString,
   IsInt,
 } from "class-validator";
@@ -33,13 +33,12 @@ class Order {
   createdAt!: Date;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => Customer,
   })
   @ValidateNested()
   @Type(() => Customer)
-  @IsOptional()
-  customer?: Customer | null;
+  customer?: Customer;
 
   @ApiProperty({
     required: false,
@@ -61,24 +60,20 @@ class Order {
   id!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => Product,
   })
   @ValidateNested()
   @Type(() => Product)
-  @IsOptional()
-  product?: Product | null;
+  product?: Product;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: Number,
   })
   @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  quantity!: number | null;
+  @Field(() => Number)
+  quantity!: number;
 
   @ApiProperty({
     required: false,

@@ -27,7 +27,7 @@ class OrderUpdateInput {
   @Field(() => CustomerWhereUniqueInput, {
     nullable: true,
   })
-  customer?: CustomerWhereUniqueInput | null;
+  customer?: CustomerWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -50,7 +50,7 @@ class OrderUpdateInput {
   @Field(() => ProductWhereUniqueInput, {
     nullable: true,
   })
-  product?: ProductWhereUniqueInput | null;
+  product?: ProductWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -61,7 +61,7 @@ class OrderUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  quantity?: number | null;
+  quantity?: number;
 
   @ApiProperty({
     required: false,

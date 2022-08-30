@@ -12,22 +12,19 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
-import { ValidateNested, IsOptional, IsNumber, IsInt } from "class-validator";
+import { ValidateNested, IsNumber, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
 @InputType()
 class OrderCreateInput {
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => CustomerWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => CustomerWhereUniqueInput)
-  @IsOptional()
-  @Field(() => CustomerWhereUniqueInput, {
-    nullable: true,
-  })
-  customer?: CustomerWhereUniqueInput | null;
+  @Field(() => CustomerWhereUniqueInput)
+  customer!: CustomerWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -41,27 +38,21 @@ class OrderCreateInput {
   discount?: number | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => ProductWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ProductWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ProductWhereUniqueInput, {
-    nullable: true,
-  })
-  product?: ProductWhereUniqueInput | null;
+  @Field(() => ProductWhereUniqueInput)
+  product!: ProductWhereUniqueInput;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: Number,
   })
   @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  quantity?: number | null;
+  @Field(() => Number)
+  quantity!: number;
 
   @ApiProperty({
     required: false,

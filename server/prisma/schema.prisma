@@ -21,16 +21,16 @@ model User {
 }
 
 model Order {
-  createdAt  DateTime  @default(now())
-  customer   Customer? @relation(fields: [customerId], references: [id])
-  customerId String?
+  createdAt  DateTime @default(now())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
   discount   Float?
-  id         String    @id @default(cuid())
-  product    Product?  @relation(fields: [productId], references: [id])
-  productId  String?
-  quantity   Int?
+  id         String   @id @default(cuid())
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String
+  quantity   Int
   totalPrice Int?
-  updatedAt  DateTime  @updatedAt
+  updatedAt  DateTime @updatedAt
 }
 
 model Customer {
